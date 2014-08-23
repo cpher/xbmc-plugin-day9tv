@@ -123,7 +123,10 @@ class Day9:
 	airdate = tree.find('time')
 	title = base64.decodestring(get("title"))
         try: 
-            description = tree.find(text='Description').findNext('p')
+            description_tag = tree.find(text='Description').findNext('p')
+            #TODO: Deal properly with the tags/formatting of the description,
+            #      although it is replaced when the youtube plugin plays the video.
+            description = unicode(description_tag)
         except:
             description = ''
         i=0
